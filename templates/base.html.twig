@@ -3,10 +3,20 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            <link href="{{ asset('stylesheets/bootstrap.min.css') }}" rel="stylesheet"/>
+            <link href="{{ asset('stylesheets/style.css') }}" rel="stylesheet"/>
+            <link href="{{ asset('stylesheets/bootstrap.min1.css') }}" rel="stylesheet"/>     
+        {% endblock %}
     </head>
     <body>
+    {% include 'parts/header.html.twig' %}  
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('javascripts/bootstrap.js') }}"></script>
+            <script src="https://kit.fontawesome.com/25eb0c20d0.js" crossorigin="anonymous"></script>
+        {% endblock %}
+    {% include 'parts/footer.html.twig' %}
+    
     </body>
 </html>

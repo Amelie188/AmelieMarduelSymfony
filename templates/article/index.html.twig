@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1 class="text-center">Nos articles</h1>
+   
+<div class="card border-warning mb-3 mx-auto mt-5 bg-light shadow rounded text-center" style="max-width: 50rem;">
+
+ <div class="card-body">
+
+ {% if app.user and app.user.roles == ["ROLE_USER"] %}
+ <button type="button" class="btn btn-outline-primary mb-4" ><a href="{{ path('add_article') }}"> Ajouter un article</a></button>
+ {% endif %}
+
+
+   {% for article in articles %}
+
+    <h4 class="mt-4">{{article.id}} - {{article.titre}} </h4>
+    <img src="{{ asset('images/' ~ article.image) }}" alt="Illustration" class="w-50">
+   
+   <br><br>
+
+    <a href="{{ path('detailArticle', {'id': article.id}) }}"><button class="btn btn-warning">En savoir +</button></a>
+
+    <br><br>
+    
+   {% endfor %}
+
+</div>  
+</div>
+</div>
+{% endblock %}
